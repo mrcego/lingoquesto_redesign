@@ -46,13 +46,11 @@
           </div>
 
           <div class="flex items-center space-x-2 mb-6">
-            <span class="text-sm text-gray-600 dark:text-white/70"
-              >Asignado por</span
-            >
+            <span class="text-gray-600 dark:text-white/70">Asignado por</span>
             <span class="font-semibold text-gray-900 dark:text-white"
               >Teacher</span
             >
-            <span class="text-sm text-gray-600 dark:text-white/70"
+            <span class="text-gray-600 dark:text-white/70"
               >• Asignado a estudiante</span
             >
             <span class="font-semibold text-gray-900 dark:text-white"
@@ -226,13 +224,13 @@
                   v-model="glossaryStore.searchQuery"
                   type="text"
                   placeholder="Buscar términos o definiciones..."
-                  class="w-full pl-10 pr-4 py-3 border border-gray-200 dark:border-gray-600 rounded-2xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent bg-white dark:bg-slate-700 focus:bg-white dark:focus:bg-slate-600 transition-all text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+                  class="w-full pl-10 pr-4 py-3 focus:outline-none border border-gray-200 rounded-2xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent focus:bg-white transition-all text-gray-900 placeholder-gray-500 dark:placeholder-gray-400"
                 />
               </div>
               <div class="flex space-x-2">
                 <select
                   v-model="glossaryStore.selectedCategory"
-                  class="px-4 py-3 border border-gray-200 dark:border-gray-600 rounded-2xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent bg-white dark:bg-slate-700 text-gray-900 dark:text-white"
+                  class="px-4 py-3 focus:outline-none border border-gray-200 rounded-2xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-gray-900"
                 >
                   <option value="all">Todas las categorías</option>
                   <option
@@ -295,7 +293,7 @@
                   v-model="glossaryStore.searchQuery"
                   type="text"
                   placeholder="Buscar frases o traducciones..."
-                  class="w-full pl-10 pr-4 py-3 border border-gray-200 dark:border-gray-600 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white dark:bg-slate-700 focus:bg-white dark:focus:bg-slate-600 transition-all text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+                  class="w-full pl-10 pr-4 py-3 focus:outline-none border border-gray-200 rounded-2xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent focus:bg-white transition-all text-gray-900 placeholder-gray-500 dark:placeholder-gray-400"
                 />
               </div>
               <Button variant="success" :icon-left="Plus"> Nueva Frase </Button>

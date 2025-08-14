@@ -2,13 +2,9 @@
   <div id="app">
     <AppShell>
       <router-view v-slot="{ Component, route }">
-        <transition 
-          :name="route.meta.transition || 'fade'"
-          mode="out-in"
-          appear
-        >
+        <div class="router-view-container">
           <component :is="Component" :key="route.path" />
-        </transition>
+        </div>
       </router-view>
     </AppShell>
   </div>

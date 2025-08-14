@@ -726,7 +726,7 @@ html[data-theme="dark"] .session-card:hover {
 /* Fade transition */
 .fade-enter-active,
 .fade-leave-active {
-  transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .fade-enter-from,
@@ -740,27 +740,27 @@ html[data-theme="dark"] .session-card:hover {
 .slide-left-leave-active,
 .slide-right-enter-active,
 .slide-right-leave-active {
-  transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 0.42s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
 .slide-left-enter-from {
   opacity: 0;
-  transform: translateX(-30px) scale(0.98);
+  transform: translateX(-20px) scale(0.98);
 }
 
 .slide-left-leave-to {
   opacity: 0;
-  transform: translateX(30px) scale(0.98);
+  transform: translateX(20px) scale(0.98);
 }
 
 .slide-right-enter-from {
   opacity: 0;
-  transform: translateX(30px) scale(0.98);
+  transform: translateX(20px) scale(0.98);
 }
 
 .slide-right-leave-to {
   opacity: 0;
-  transform: translateX(-30px) scale(0.98);
+  transform: translateX(-20px) scale(0.98);
 }
 
 /* Page transition container */

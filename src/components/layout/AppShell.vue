@@ -92,14 +92,14 @@
           <router-link
             to="/content"
             class="sidebar-item group relative overflow-hidden px-3 md:px-4 py-3"
-            :class="{ active: $route.path === '/content' }"
+            :class="{ active: $route.path.includes('content') }"
             @click="sidebarOpen = false"
           >
             <div class="flex items-center space-x-4">
               <div
                 class="w-8 h-8 md:w-10 md:h-10 rounded-xl md:rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:scale-110"
                 :class="
-                  $route.path === '/content'
+                  $route.path.includes('content')
                     ? 'bg-white/20'
                     : 'bg-gray-100 group-hover:bg-cyan-100'
                 "
@@ -107,7 +107,7 @@
                 <BookOpen
                   class="w-5 h-5"
                   :class="
-                    $route.path === '/content'
+                    $route.path.includes('content')
                       ? 'text-white'
                       : 'text-gray-600 group-hover:text-cyan-600'
                   "
@@ -125,7 +125,7 @@
             <ChevronRight
               class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0 hidden md:block"
               :class="
-                $route.path === '/content' ? 'text-white' : 'text-gray-400'
+                $route.path.includes('content') ? 'text-white' : 'text-gray-400'
               "
             />
           </router-link>

@@ -1,15 +1,17 @@
 <script setup lang="ts">
 import { computed } from "vue";
+import { storeToRefs } from "pinia";
+
 import { useGlossaryStore } from "@/stores/glossary";
 import { useConversationStore } from "@/stores/conversation";
+
 import SummaryWordPracticeCard from "@/components/summary/SummaryWordPracticeCard.vue";
 import SummaryPhrasesPracticeCard from "@/components/summary/SummaryPhrasesPracticeCard.vue";
 
 const glossaryStore = useGlossaryStore();
-const conversationStore = useConversationStore();
+const { terms, phrases } = storeToRefs(glossaryStore);
 
-const glossaryCount = computed(() => glossaryStore.terms.length);
-const phraseCount = computed(() => glossaryStore.phrases.length);
+const conversationStore = useConversationStore();
 
 // Dynamic final score from conversation messages (average of available message.score values).
 const finalScore = computed(() => {
@@ -86,7 +88,7 @@ const getScoreGradient = (score: number) => {
             <div class="flex items-center justify-between mb-2">
               <span class="text-sm font-medium text-gray-700">Palabras</span>
               <span class="text-sm font-bold text-indigo-600">{{
-                glossaryCount
+                terms.length
               }}</span>
             </div>
             <div
@@ -95,7 +97,7 @@ const getScoreGradient = (score: number) => {
               <div
                 class="h-full bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full transition-all duration-1000"
                 :style="{
-                  width: `${Math.min((glossaryCount / 10) * 100, 100)}%`,
+                  width: `${Math.min((terms.length / 10) * 100, 100)}%`,
                 }"
               ></div>
             </div>
@@ -106,7 +108,7 @@ const getScoreGradient = (score: number) => {
             <div class="flex items-center justify-between mb-2">
               <span class="text-sm font-medium text-gray-700">Frases</span>
               <span class="text-sm font-bold text-emerald-600">{{
-                phraseCount
+                phrases.length
               }}</span>
             </div>
             <div
@@ -115,7 +117,7 @@ const getScoreGradient = (score: number) => {
               <div
                 class="h-full bg-gradient-to-r from-emerald-500 to-teal-600 rounded-full transition-all duration-1000"
                 :style="{
-                  width: `${Math.min((phraseCount / 10) * 100, 100)}%`,
+                  width: `${Math.min((phrases.length / 10) * 100, 100)}%`,
                 }"
               ></div>
             </div>

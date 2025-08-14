@@ -14,13 +14,16 @@ import WordCard from "@/components/vocabulary/WordCard.vue";
 import PhraseCard from "@/components/vocabulary/PhraseCard.vue";
 import Button from "@/components/ui/Button.vue";
 import { mockGlossaryTerms, mockPhrases } from "@/mock/data";
+import { storeToRefs } from "pinia";
 
 const mainTab = ref<"vocabulary" | "phrases">("vocabulary");
 const glossaryStore = useGlossaryStore();
 
+const { terms, phrases } = storeToRefs(glossaryStore);
+
 onMounted(() => {
-  if (!glossaryStore.terms.length) glossaryStore.setTerms(mockGlossaryTerms);
-  if (!glossaryStore.phrases.length) glossaryStore.setPhrases(mockPhrases);
+  if (!terms.value.length) glossaryStore.setTerms(mockGlossaryTerms);
+  if (!phrases.value.length) glossaryStore.setPhrases(mockPhrases);
 });
 </script>
 
@@ -59,7 +62,7 @@ onMounted(() => {
                 : 'bg-indigo-100 dark:bg-indigo-900 text-indigo-100 dark:text-indigo-300',
             ]"
           >
-            {{ glossaryStore.terms.length }}
+            {{ terms.length }}
           </div>
         </button>
 
@@ -91,7 +94,7 @@ onMounted(() => {
                 : 'bg-emerald-100 dark:bg-emerald-900 text-emerald-100 dark:text-emerald-300',
             ]"
           >
-            {{ glossaryStore.phrases.length }}
+            {{ phrases.length }}
           </div>
         </button>
       </div>
@@ -103,7 +106,7 @@ onMounted(() => {
         <div class="text-white">
           <span class="text-sm font-medium">Total:</span>
           <span class="text-2xl font-bold ml-2">{{
-            glossaryStore.terms.length + glossaryStore.phrases.length
+            terms.length + phrases.length
           }}</span>
           <span class="text-sm opacity-80 ml-1">Items</span>
         </div>
@@ -118,7 +121,7 @@ onMounted(() => {
             class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
           />
           <input
-            class="pl-10 pr-4 py-2 rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+            class="pl-10 pr-4 py-2 rounded-xl border border-indigo-200 focus:outline-none focus:ring-offset-2 focus:ring-brand-violet/20 focus:border-2 focus:border-indigo-600 bg-white"
             placeholder="Buscar palabras..."
           />
         </div>
@@ -137,22 +140,14 @@ onMounted(() => {
 
       <!-- Words Grid -->
       <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        <WordCard
-          v-for="(term, i) in glossaryStore.terms"
-          :key="i"
-          :term="term"
-        />
+        <WordCard v-for="(term, i) in terms" :key="i" :term="term" />
       </div>
     </div>
 
     <div v-else class="space-y-6">
       <!-- Phrases Grid -->
       <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        <PhraseCard
-          v-for="(p, i) in glossaryStore.phrases"
-          :key="i"
-          :phrase="p"
-        />
+        <PhraseCard v-for="(p, i) in phrases" :key="i" :phrase="p" />
       </div>
     </div>
   </div>
